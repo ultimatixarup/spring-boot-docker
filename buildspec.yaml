@@ -5,7 +5,7 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws --version
-      - aws ecr get-login --region us-east-1 --no-include-email
+      - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/r6u8g8n9
       - $(aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/r6u8g8n9)
       - REPOSITORY_URI=public.ecr.aws/r6u8g8n9/privaclave-container-images
       - CODEBUILD_RESOLVED_SOURCE_VERSION=1.0
