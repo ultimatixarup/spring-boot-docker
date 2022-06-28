@@ -18,9 +18,9 @@ phases:
       - echo Building the Docker image...
       - docker build -t $REPOSITORY_URI:latest .
       - echo Tagging Docker image...
-      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+      - docker tag privaclave-container-images:latest public.ecr.aws/r6u8g8n9/privaclave-container-images:latest
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
-      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - docker push public.ecr.aws/r6u8g8n9/privaclave-container-images:latest
