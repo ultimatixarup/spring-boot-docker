@@ -4,13 +4,11 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      - echo $AWS_DEFAULT_REGION
-      - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
-      - echo $REPOSITORY_URI
       - aws --version
-      - aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email
-      - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
-      - REPOSITORY_URI=015389403723.dkr.ecr.us-east-1.amazonaws.com/sample-springboot
+      - aws ecr get-login --region us-east-1 --no-include-email
+      - $(aws ecr get-login --region us-east-1 --no-include-email)
+      - REPOSITORY_URI=public.ecr.aws/r6u8g8n9/privaclave-container-images
+      - CODEBUILD_RESOLVED_SOURCE_VERSION=1.0
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
