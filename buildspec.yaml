@@ -16,8 +16,6 @@ phases:
       - ./gradlew build
       - echo Building the Docker image...
       - sudo docker build -t public.ecr.aws/r6u8g8n9/privaclave-container-images:latest .
-      - echo Tagging Docker image...
-      - sudo docker tag privaclave-container-images:latest public.ecr.aws/r6u8g8n9/privaclave-container-images:latest
   post_build:
     commands:
       - echo Build completed on `date`
