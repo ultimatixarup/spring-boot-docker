@@ -15,7 +15,7 @@ phases:
       - echo Build started on `date`
       - ./gradlew build
       - echo Building the Docker image...
-      - docker build -t $REPOSITORY_URI:latest .
+      - docker build -t public.ecr.aws/r6u8g8n9/privaclave-container-images:latest .
       - echo Tagging Docker image...
       - docker tag privaclave-container-images:latest public.ecr.aws/r6u8g8n9/privaclave-container-images:latest
   post_build:
