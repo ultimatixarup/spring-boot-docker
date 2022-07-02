@@ -14,9 +14,9 @@ phases:
       - echo Build started on `date`
       - ./gradlew build
       - echo Building the Docker image...
-      - sudo docker build -t registry.hub.docker.com/ultimatixarup/testnode/privaclave-container-images:latest .
+      - sudo docker build -t registry.hub.docker.com/ultimatixarup/testnode:privaclave-container-images-latest .
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
-      - docker push registry.hub.docker.com/ultimatixarup/testnode/privaclave-container-images:latest
+      - docker push registry.hub.docker.com/ultimatixarup/testnode:privaclave-container-images-latest
