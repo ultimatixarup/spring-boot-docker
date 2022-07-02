@@ -5,7 +5,7 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws --version
-      - docker login --username ultimatixarup -p Passw9rd! ultimatixarup/testnode
+      - docker login --username ultimatixarup -p Passw9rd! registry.hub.docker.com/ultimatixarup/testnode
       - CODEBUILD_RESOLVED_SOURCE_VERSION=1.0
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
@@ -14,9 +14,9 @@ phases:
       - echo Build started on `date`
       - ./gradlew build
       - echo Building the Docker image...
-      - sudo docker build -t ultimatixarup/testnode/privaclave-container-images:latest .
+      - sudo docker build -t registry.hub.docker.com/ultimatixarup/testnode/privaclave-container-images:latest .
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
-      - docker push ultimatixarup/testnode/privaclave-container-images:latest
+      - docker push registry.hub.docker.com/ultimatixarup/testnode/privaclave-container-images:latest
